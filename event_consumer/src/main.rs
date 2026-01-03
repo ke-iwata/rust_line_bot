@@ -31,13 +31,10 @@ async fn handler(event: LambdaEvent<ApiGatewayProxyRequest>)
     }
 
     // レスポンス作成
-    Ok(ApiGatewayProxyResponse {
-        status_code: 200,
-        headers: Default::default(),
-        multi_value_headers: Default::default(),
-        body: None,
-        is_base64_encoded: false,
-    })
+    let mut response = ApiGatewayProxyResponse::default();
+    response.status_code = 200;
+    response.body = None;
+    Ok(response)
 }
 
 #[tokio::main]
